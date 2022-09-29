@@ -31,13 +31,14 @@ public class PositionType {
         if (this == o) return true;
         if (!(o instanceof PositionType)) return false;
         PositionType that = (PositionType) o;
-        return id == that.id && value.equals(that.value);
+        return getId() == that.getId();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, value);
+        return Objects.hash(getId());
     }
+
 
     // Getters and Setters:
 
