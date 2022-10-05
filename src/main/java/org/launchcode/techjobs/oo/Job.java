@@ -2,7 +2,7 @@ package org.launchcode.techjobs.oo;
 
 import java.util.Objects;
 
-public class Job {
+public class Job extends JobField {
 
     private int id;
     private static int nextId = 1;
@@ -23,7 +23,7 @@ public class Job {
     }
 
     public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
-        this();
+//        this();
         this.name = name;
         this.employer = employer;
         this.location = location;
@@ -34,26 +34,26 @@ public class Job {
 // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Job)) return false;
-        Job job = (Job) o;
-        return id == job.id;
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (!(o instanceof Job)) return false;
+//        Job job = (Job) o;
+//        return getId() == employer.getId();
+//    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(getId());
+//    }
 
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
 
-    public int getId() {
-        return id;
-    }
+//    public int getId() {
+//        return id;
+//    }
 
     public String getName() {
         return name;
@@ -93,5 +93,36 @@ public class Job {
 
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
+    }
+
+    @Override
+    public String toString() {
+        String output = "";
+        if(name == ""){
+            name = "Data not available";
+        }
+        if(employer.getValue() == "" || employer.getValue() == null){
+            employer.setValue("Data not available");
+        }
+        if(location.getValue() == "" || location.getValue() == null){
+            location.setValue("Data not available");
+        }
+        if(positionType.getValue() == "" || positionType.getValue() == null){
+            positionType.setValue("Data not available");
+        }
+        if(coreCompetency.getValue() == "" || coreCompetency.getValue() == null){
+            coreCompetency.setValue("Data not available");
+        }
+
+        output =
+             "\nID: " + id +
+             "\nName: " + name +
+             "\nEmployer: " + employer +
+             "\nLocation: " + location +
+             "\nPosition Type: " + positionType +
+             "\nCore Competency: " + coreCompetency +
+             "\n";
+
+    return output;
     }
 }
